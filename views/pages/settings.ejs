@@ -13,16 +13,14 @@
 
     <div class="result">
         <p class="subTitle" id="triggers">current triggers.</>
-            <script type="text/javascript">
-                var data = <%= result%>;
-                console.log(data);
-            </script>
-            <% for(var i=0; i < result.length; i++) { %>
-                <p><%= result[i].day %> - <%= result[i].time %>
-                <form>
-                <input type="button" value="delete" class="delete" onclick="window.location.href='/delete/<%= result[i]._id %>'" />
-                </form></p>
-            <% } %>
+            <div class="savedDays">
+                <% for(var i=0; i < result.length; i++) { %>
+                    <p><%= result[i].day %> - <%= result[i].time %>
+                    <form>
+                    <input type="button" value="delete" class="delete" onclick="window.location.href='/delete/<%= result[i]._id %>'" />
+                    </form></p>
+                <% } %>
+            </div>
     </div>
 
     <form class="showerOptions" action="" method="post">

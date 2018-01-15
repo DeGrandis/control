@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #283238;
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+    padding-top: 3px;
+    /*border-bottom: 7px solid #dfe2ea; */
+    z-index: 2;
+    position: relative;
+
+}
+
+.title {
+    font-family: 'Cabin', sans-serif;
+    color: #fff;
+    font-size: 36px;
+}
+
+p {
+    margin: 8px;
+}
+
+#hardware {
+    transform: translateY(22%);
+    height: 40px;
+    width: 40px;
+}
+
+.subTitle {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #fff;
+    font-size: 26px;
+}
+
+.main {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.footer {
+    background-color: #242E33;
+    padding-bottom: 100%;
+}
+
+.delete {
+    color: #F78B21;
+
+    background-color: #283238;
+    border: 1px solid #F78B21;
+    border-radius: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+
+}

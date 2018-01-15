@@ -1,0 +1,58 @@
+<%- include ../partials/header.ejs %>
+
+<div class="main">
+    <script type="text/javascript">
+        $(function () {
+            var socket = io();
+
+            socket.on('load', function(load){
+                console.log('logged');
+            });
+        });
+    </script>
+
+    <div class="result">
+        <p class="subTitle" id="triggers">current triggers.</>
+            <script type="text/javascript">
+                var data = <%= result%>;
+                console.log(data);
+            </script>
+            <% for(var i=0; i < result.length; i++) { %>
+                <p><%= result[i].day %> - <%= result[i].time %>
+                <form>
+                <input type="button" value="delete" class="delete" onclick="window.location.href='/delete/<%= result[i]._id %>'" />
+                </form></p>
+            <% } %>
+    </div>
+
+    <form class="showerOptions" action="" method="post">
+        <select name="day">
+            <option value="0">Sunday</option>
+            <option value="1">Monday</option>
+            <option value="2">Tuesday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thursday</option>
+            <option value="5">Friday</option>
+            <option value="6">Saturday</option>
+        </select>
+        <br>
+        <br>
+
+        <input id="time" type="time" name="time">
+        <br>
+        <br>
+
+        <input type="text" name="topic" value="" placeholder="Topic">
+
+        <br>
+        <input type="radio" name="status" value="1">On
+        <input type="radio" name="status" value="0">Off
+
+        <br>
+
+        <button type="submit" name="button" value="Submitted">Submit</button>
+    </form>
+
+</div>
+
+<%- include ../partials/footer.ejs %>

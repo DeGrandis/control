@@ -9,7 +9,7 @@ var path = require('path');
 var mqtt = require('mqtt');
 var favicon = require('serve-favicon');
 
-
+//comment
 var client  = mqtt.connect('mqtt:192.168.1.242:1883');
 var url = 'mongodb://rob:rob@ds251277.mlab.com:51277/homeautomationdeg';
 

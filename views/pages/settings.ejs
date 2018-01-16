@@ -14,12 +14,34 @@
     <div class="result">
         <p class="subTitle" id="triggers">current triggers.</>
             <div class="savedDays">
-                <% for(var i=0; i < result.length; i++) { %>
-                    <p><%= result[i].day %> - <%= result[i].time %>
-                    <form>
-                    <input type="button" value="delete" class="delete" onclick="window.location.href='/delete/<%= result[i]._id %>'" />
-                    </form></p>
-                <% } %>
+                <table class="tableStyle">
+                    <tr class="tableHeading">
+                        <td><strong>day</strong></td>
+                        <td><strong>time</strong></td>
+                        <td><strong>device</strong></td>
+                        <td><strong>message</strong></td>
+                        <td><strong>action</strong></td>
+                    </tr>
+                    <% for(var i=0; i < result.length; i++) { %>
+                        <tr>
+                            <td><%= result[i].day %></td>
+                            <td><%= result[i].time %></td>
+                            <td><%= result[i].topic %></td>
+                            <td><%= result[i].status %></td>
+                            <td>
+                                <form class="formButton">
+                                <input type="button" value="modify" class="customButton modify" onclick="window.location.href='/modify/<%= result[i]._id %>'" />
+                                </form>
+                            </td>
+                            <td>
+                                <form class="formButton">
+                                <input type="button" value="delete" class="customButton delete" onclick="window.location.href='/delete/<%= result[i]._id %>'" />
+                                </form>
+                            </td>
+
+                        </tr>
+                    <% } %>
+                </table>
             </div>
     </div>
 

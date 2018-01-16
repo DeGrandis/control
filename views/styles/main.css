@@ -18,10 +18,7 @@ body {
     font-family: 'Cabin', sans-serif;
     color: #fff;
     font-size: 36px;
-}
-
-p {
-    margin: 8px;
+    margin: -0.5em;
 }
 
 #hardware {
@@ -34,6 +31,7 @@ p {
     font-family: 'Source Sans Pro', sans-serif;
     color: #fff;
     font-size: 26px;
+    margin: 0;
 }
 
 .main {
@@ -46,17 +44,54 @@ p {
     padding-bottom: 100%;
 }
 
-.delete {
-    color: #F78B21;
-
+.customButton {
     background-color: #283238;
-    border: 1px solid #F78B21;
     border-radius: 10px;
     font-family: 'Source Sans Pro', sans-serif;
+    padding: 3px 9px 3px 9px;
+    -webkit-transition: width 0.17s; /* For Safari 3.1 to 6.0 */
+    transition: 0.17s;
+}
+
+.delete {
+    color: #F78B21;
+    border: 1px solid #F78B21;
+}
+
+.delete:hover {
+    background-color: #F78B21;
+    color: #283238;
+}
+
+.modify {
+    color: #07C487;
+    border: 1px solid #07C487;
+}
+
+.modify:hover {
+    background-color: #07C487;
+    color: #283238;
+}
+
+.formButton {
 
 }
 
 .savedDays {
     font-family: 'Roboto', sans-serif;
     color: #fff;
+}
+
+td {
+    padding-right: 25px;
+    padding-bottom: 2px;
+}
+
+.tableStyle {
+    margin: 0;
+    padding: 0;
+}
+
+.tableHeading {
+    font-size: 18px;
 }

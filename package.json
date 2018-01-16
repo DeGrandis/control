@@ -1,0 +1,30 @@
+{
+  "name": "homeautomation",
+  "version": "1.0.0",
+  "description": "Node code for my home automation project",
+  "main": "server.js",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mongodb": "^2.2.33",
+    "mqtt": "^2.15.1",
+    "nodemon": "^1.14.3",
+    "serve-favicon": "^2.4.5",
+    "socketio": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeGrandis/control.git"
+  },
+  "author": "Robert DeGrandis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeGrandis/control/issues"
+  },
+  "homepage": "https://github.com/DeGrandis/control#readme"
+}

@@ -1,0 +1,58 @@
+<%- include ../partials/header.ejs %>
+
+<div class="content">
+
+  <div class="result">
+      <p class="subTitle" id="triggers">known devices.</>
+          <div class="savedDays">
+              <table class="tableStyle">
+                  <tr class="tableHeading">
+                      <td><strong>name</strong></td>
+                      <td><strong>mqtt topic</strong></td>
+                      <td><strong>action</strong></td>
+                  </tr>
+                  <% for(var i=0; i < result.length; i++) { %>
+                      <tr>
+                          <td><%= result[i].name %></td>
+                          <td><%= result[i].topic %></td>
+
+                          <td>
+                              <form class="formButton">
+                              <input type="button" value="modify" class="customButton modify" onclick="window.location.href='/modify/<%= result[i]._id %>'" />
+                              </form>
+                          </td>
+                          <td>
+                              <form class="formButton">
+                              <input type="button" value="delete" class="customButton delete" onclick="window.location.href='/deviceDelete/<%= result[i]._id %>'" />
+                              </form>
+                          </td>
+
+                      </tr>
+                  <% } %>
+              </table>
+          </div>
+  </div>
+  <br>
+
+
+
+  <p class="subTitle" id="triggers">add a device.</>
+    <br>
+
+  <form class="addDevice" action="" method="post">
+      <p class="subTitle">name.</p>
+      <input class="textInput" type="text" name="name" value="" placeholder="lights, shower, ect.">
+      <br>
+      <br>
+
+      <p class="subTitle">mqtt topic.</p>
+      <input class="textInput" type="text" name="topic" value="" placeholder="Topic">
+      <br>
+
+      <br>
+      <br>
+      <button class="customButton submit"type="submit" name="button" value="Submitted">Submit</button>
+  </form>
+</div>
+
+<%- include ../partials/footer.ejs %>

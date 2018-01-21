@@ -1,6 +1,6 @@
 <%- include ../partials/header.ejs %>
 
-<div class="main">
+<div class="content">
     <script type="text/javascript">
         $(function () {
             var socket = io();
@@ -35,7 +35,7 @@
                             </td>
                             <td>
                                 <form class="formButton">
-                                <input type="button" value="delete" class="customButton delete" onclick="window.location.href='/delete/<%= result[i]._id %>'" />
+                                <input type="button" value="delete" class="customButton delete" onclick="window.location.href='/dayDelete/<%= result[i]._id %>'" />
                                 </form>
                             </td>
 
@@ -66,7 +66,11 @@
         <br>
 
         <p class="subTitle">input a device.</p>
-        <input class="textInput" type="text" name="topic" value="" placeholder="Topic">
+        <select name="topic">
+            <% for(var i=0; i < devices.length; i++) { %>
+              <option value="<%= devices[i].topic %>"><%= devices[i].name %></option>
+            <% } %>
+        </select>
         <br>
 
         <p class="subTitle">select an action.</p>

@@ -1,7 +1,34 @@
 <%- include ../partials/header.ejs %>
 
-<div>
-    test content
+
+
+<div class="content">
+    <div class="toggleDevices">
+      <% for(var i=0; i < devices.length; i++) { %>
+          <p class="subTitle"><%= devices[i].name %></p>
+          <button class="btn btn-primary" type="button" name="button" onclick="emitData('<%= devices[i].topic %>', 1)">on</button>
+          <button class="btn btn-danger" type="button" name="button" onclick="emitData('<%= devices[i].topic %>', 0)">off</button>
+      <% } %>
+    </div>
 </div>
+
+
+<script type="text/javascript">
+    $(function () {
+        var socket = io();
+        socket.on('load', function(load){
+            console.log('logged');
+        });
+    });
+
+    function emitData(topic, status) {
+      var socket = io();
+      socket.emit('userClick', {top: topic, stat: status});
+    }
+
+
+
+
+</script>
 
 <%- include ../partials/footer.ejs %>

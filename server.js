@@ -10,6 +10,7 @@ var path = require('path');
 var mqtt = require('mqtt');
 var favicon = require('serve-favicon');
 var ejs = require('ejs');
+var helpers = require('./js/serverHelpers.js')
 
 //connect to mqtt server, will be a local IP
 var client  = mqtt.connect('mqtt:192.168.1.242:1883');
@@ -40,7 +41,16 @@ client.on('connect', function () {
 //------------------------
 
 app.get('/', function(req, res) {
-    res.render('pages/index');
+  MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      db.collection("Devices").find().toArray(function(err, deviceResult) {
+          if (err) throw err;
+          db.close();
+
+          res.render('pages/index',
+          {devices: deviceResult});
+      });
+  });
 });
 
 //GET /settings
@@ -51,34 +61,19 @@ app.get('/settings', function(req, res) {
         if (err) throw err;
         db.collection("Days").find().toArray(function(err, result) {
             if (err) throw err;
-            db.close();
-            //switches days from base zero numbering to actual day names
             for (var i = 0; i < result.length; i++) {
-                console.log(result[i].day);
-                switch (result[i].day) {
-                    case "0":
-                        result[i].day = "Sunday";
-                        break;
-                    case "1":
-                        result[i].day = "Monday";
-                        break;
-                    case "2":
-                        result[i].day = "Tuesday";
-                        break;
-                    case "3":
-                        result[i].day = "Wednesday";
-                        break;
-                    case "4":
-                        result[i].day = "Thursday";
-                        break;
-                    case "5":
-                        result[i].day = "Friday";
-                        break;
-                    case "6":
-                        result[i].day = "Saturday";
-                }
+                result[i].day = helpers.numberToName(result[i].day);
             }
-            res.render('pages/settings', {result: result});
+
+            db.collection("Devices").find().toArray(function(err, deviceResult) {
+                if (err) throw err;
+                db.close();
+
+                res.render('pages/settings',
+                {result: result,
+                  devices: deviceResult
+                });
+            });
         });
     });
 });
@@ -98,9 +93,55 @@ app.post('/settings', function(req, res) {
     });
 });
 
-//GET /deleted
-//deletes an entry from the database
-app.get('/delete/:id', function(req, res) {
+
+//GET /devices
+//connects to mongodb and fetches trigger data.  Then renders a page
+//with query results.
+app.get('/devices', function(req, res) {
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        db.collection("Devices").find().toArray(function(err, result) {
+            if (err) throw err;
+            db.close();
+            res.render('pages/devices', {result: result});
+        });
+    });
+});
+
+
+//POST /devices
+//inserts a form entry into the database, then redirects to /devices
+//to avoid a double POST request on accidental refresh.
+app.post('/devices', function(req, res) {
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        db.collection("Devices").insertOne(req.body, function(err, ress) {
+            if (err) throw err;
+            console.log("Inserted Device");
+            db.close();
+            res.redirect('/devices');
+        });
+    });
+});
+
+//GET /deviceDelete
+//deletes an entry from the device database
+app.get('/deviceDelete/:id', function(req, res) {
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var myquery = { "_id": ObjectId(req.params.id) };
+      db.collection("Devices").deleteOne(myquery, function(err, obj) {
+        if (err) throw err;
+        console.log("1 document deleted");
+        db.close();
+        res.redirect('/devices');
+      });
+    });
+});
+
+//GET /dayDelete
+//deletes an entry from the day database
+app.get('/dayDelete/:id', function(req, res) {
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
       var myquery = { "_id": ObjectId(req.params.id) };
@@ -115,8 +156,13 @@ app.get('/delete/:id', function(req, res) {
 
 //logs socket connection
 io.on('connection', function(socket) {
-    console.log("Connection.");
-})
+    socket.on('userClick', function(socket) {
+        client.publish(socket.top, socket.stat);
+        console.log("Message Published to: "  + socket.top + " of value: " + socket.stat);
+    });
+});
+
+
 
 //starts server
 http.listen(3000, function() {
@@ -126,7 +172,7 @@ http.listen(3000, function() {
 //uses built in javascript data functions and stores it to a variable.
 //polls the database and checks to see if any entry matches the current time.
 //if anything matches the current time then it publishes a status message
-//to the stored mqtt topic.  
+//to the stored mqtt topic.
 //**does this every second.
 //*****THERE IS PROBABLY A MORE ELEGANT WAY TO DO THIS.
 setInterval(function() {

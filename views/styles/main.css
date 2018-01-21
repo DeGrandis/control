@@ -1,10 +1,10 @@
 .footer {
-    background-color: #242E33;
+    background-color: #2C3E50;
     padding-bottom: 100%;
 }
 
 .customButton {
-    background-color: #283238;
+    background-color: #34495E;
     border-radius: 10px;
     font-family: 'Source Sans Pro', sans-serif;
     padding: 2px 9px 2px 9px;
@@ -20,7 +20,7 @@
 
 .delete:hover {
     background-color: #F78B21;
-    color: #283238;
+    color: #34495E;
 }
 
 .modify {
@@ -30,7 +30,7 @@
 
 .modify:hover {
     background-color: #07C487;
-    color: #283238;
+    color: #34495E;
 }
 
 .submit {
@@ -41,7 +41,7 @@
 
 .submit:hover {
     background-color: #22C7F7;
-    color: #283238;
+    color: #34495E;
 }
 
 .formButton {
@@ -50,7 +50,7 @@
 
 .savedDays {
     font-family: 'Roboto', sans-serif;
-    color: #fff;
+    color: #ECF0F1;
 }
 
 td {
@@ -70,12 +70,12 @@ td {
 .textInput {
     font-size: 16px;
     font-weight: 100;
-    background-color: #283238;
-    border: 1px solid #fff;
+    background-color: #34495E;
+    border: 1px solid #ECF0F1;
     border-top: #000;
     border-left: #000;
     border-right: #000;
-    color: #fff;
+    color: #ECF0F1;
     outline: none;
 }
 
@@ -85,10 +85,10 @@ td {
 }
 
 .showerOptions {
-    
+
 }
 
 .binaryRadio {
-    color: #fff;
+    color: #ECF0F1;
     padding: 10px;
 }

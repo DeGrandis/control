@@ -7,40 +7,46 @@
     background-color: #34495E;
     border-radius: 10px;
     font-family: 'Source Sans Pro', sans-serif;
-    padding: 2px 9px 2px 9px;
+    /*padding: 2px 8px 2px 8px;*/
     -webkit-transition: width 0.17s; /* For Safari 3.1 to 6.0 */
     transition: 0.17s;
     cursor: pointer;
+    width: 35px;
+    height: 25px;
+    margin: 0 auto;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .delete {
-    color: #F78B21;
-    border: 1px solid #F78B21;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
 }
 
 .delete:hover {
-    background-color: #F78B21;
+    background-color: #e74c3c;
     color: #34495E;
 }
 
 .modify {
-    color: #07C487;
-    border: 1px solid #07C487;
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
 }
 
 .modify:hover {
-    background-color: #07C487;
+    background-color: #2ecc71;
     color: #34495E;
 }
 
 .submit {
 
-    color: #22C7F7;
-    border: 1px solid #22C7F7;
+    color: #ecf0f1;
+    border: 1px solid #ecf0f1;
 }
 
 .submit:hover {
-    background-color: #22C7F7;
+    background-color: #ecf0f1;
     color: #34495E;
 }
 

@@ -3,12 +3,12 @@ ctrl. (pronounced "control") is my custom home automation solution.  It can do t
 
 
 # What is needed:
-## Physical
+### Physical
 *   Raspberry Pi (or some other local dedicated server)
 *   ESP Modules (32, 8266, or some future type)
 *   Relays
 *   (optional) Pipe Solenoid
-## Software
+### Software
 *   NodeJS
 *   Mosquito (MQTT Server)
 *   Arduino IDE (With ESP firmware installed)

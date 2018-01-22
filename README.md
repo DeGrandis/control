@@ -1,8 +1,11 @@
 # ctrl.
-ctrl. (pronounced "control") is my custom home automation solution.  It can do timed actions and make generative toggle pages.  As of now, the plan is to run it on a raspberry pi (broker) and use ESP32 and ESP8266 (sub-clients) modules for physical interfacing.  The website portion is designed to be added to the homescreen of either an Android or iOS device.  This is out of laziness, I'm not coding two seperate apps for this.
+ctrl. (pronounced "control") is my custom home automation solution.  It can do timed actions and make generative toggle pages.  As of now, the plan is to run it on a raspberry pi (broker) and use ESP32 and ESP8266 (sub-clients) modules for physical interfacing.  The website portion is designed to be added to the homescreen of either an Android or iOS device.  This is out of laziness, I'm not coding two separate apps for this.
 
 
-# What is needed:
+The goal is to recreate a scalable system for IOT devices to easily be interfaced.  In ctrl, anything that can subscribe and publish MQTT topics can be connected to this system.
+
+
+## What is needed:
 ### Physical
 *   Raspberry Pi (or some other local dedicated server)
 *   ESP Modules (32, 8266, or some future type)

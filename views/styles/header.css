@@ -4,30 +4,6 @@ body {
     background-color: #34495E;
 }
 
-.header {
-    width: 100%;
-    text-align: center;
-    padding-top: 3px;
-    /*border-bottom: 7px solid #dfe2ea; */
-    z-index: 2;
-    position: relative;
-    background-color: #34495E;
-}
-
-.title {
-    font-family: 'Cabin', sans-serif;
-    color: #ECF0F1;
-    font-size: 36px;
-    margin-top: -2%;
-
-}
-
-#hardware {
-    transform: translateY(22%);
-    height: 40px;
-    width: 40px;
-
-}
 
 .subTitle {
     font-family: 'Source Sans Pro', sans-serif;
@@ -40,18 +16,4 @@ body {
     margin-left: 5%;
     margin-right: 5%;
     background-color: #34495E;
-}
-
-#ctrlHead {
-    padding: 4px 26px 4px 6px;
-    border: 2px solid #ECF0F1;
-    border-radius: 6px;
-    -webkit-transition: width 0.17s; /* For Safari 3.1 to 6.0 */
-    transition: 0.23s;
-}
-
-#ctrlHead:hover {
-    color: #34495E;
-    background-color: #ECF0F1;
-    cursor: pointer;
 }

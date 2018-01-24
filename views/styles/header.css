@@ -16,4 +16,13 @@ body {
     margin-left: 5%;
     margin-right: 5%;
     background-color: #34495E;
+    user-select: none;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }

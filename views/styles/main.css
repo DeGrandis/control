@@ -1,6 +1,7 @@
 .footer {
     background-color: #2C3E50;
-    padding-bottom: 100%;
+    bottom: 0;
+
 }
 
 .customButton {
@@ -100,7 +101,12 @@ td {
 }
 
 .toggleDevices {
-    display: grid;
-      grid-template-columns: 100px 100px 100px;
-      grid-gap: 210px;
+    margin-top: 15px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.footerSpacing {
+    margin-bottom: 25%;
 }

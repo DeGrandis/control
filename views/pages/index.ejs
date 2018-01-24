@@ -2,7 +2,7 @@
 
 
 
-<div class="content">
+<div class="content footerSpacing">
     <div class="toggleDevices">
       <% for(var i=0; i < devices.length; i++) { %>
 
@@ -11,11 +11,6 @@
               <button type="button" name="button" class="homescreenButton" id="onButton" onclick="emitData('<%= devices[i].topic %>', 1)">On</button>
               <button type="button" name="button" class="homescreenButton" id="offButton" onclick="emitData('<%= devices[i].topic %>', 0)">Off</button>
           </div>
-
-          <!--<p class="subTitle"><%= devices[i].name %></p>
-          <button class="btn btn-primary" type="button" name="button" onclick="emitData('<%= devices[i].topic %>', 1)">on</button>
-          <button class="btn btn-danger" type="button" name="button" onclick="emitData('<%= devices[i].topic %>', 0)">off</button>
-            -->
       <% } %>
     </div>
 </div>

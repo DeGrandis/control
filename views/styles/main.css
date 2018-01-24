@@ -1,6 +1,7 @@
 .footer {
     background-color: #2C3E50;
-    padding-bottom: 100%;
+    bottom: 0;
+
 }
 
 .customButton {
@@ -97,4 +98,15 @@ td {
 .binaryRadio {
     color: #ECF0F1;
     padding: 10px;
+}
+
+.toggleDevices {
+    margin-top: 15px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.footerSpacing {
+    margin-bottom: 25%;
 }

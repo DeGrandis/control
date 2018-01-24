@@ -40,6 +40,10 @@ client.on('connect', function () {
 //ROUTES
 //------------------------
 
+app.get('/template', function(req, res) {
+    res.render('pages/template');
+});
+
 app.get('/', function(req, res) {
   MongoClient.connect(url, function(err, db) {
       if (err) throw err;

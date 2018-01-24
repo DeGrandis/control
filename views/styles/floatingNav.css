@@ -1,0 +1,74 @@
+
+.nav {
+    display: flex;
+    border-top: 1px solid #ECF0F1;
+    width: 100%;
+    text-align: center;
+    /*border-bottom: 7px solid #dfe2ea; */
+    z-index: 2;
+    position: fixed;
+    background-color: #2c3e50;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+
+.title {
+    font-family: 'Cabin', sans-serif;
+    color: #ECF0F1;
+    font-size: 36px;
+    flex: 1;
+}
+
+#ctrlHead {
+    padding: 4px 26px 4px 6px;
+    border: 2px solid #ECF0F1;
+    border-radius: 6px;
+    -webkit-transition: width 0.17s; /* For Safari 3.1 to 6.0 */
+    transition: 0.23s;
+}
+
+#ctrlHead:hover {
+    color: #2c3e50;
+    background-color: #ECF0F1;
+    cursor: pointer;
+}
+
+.title > p {
+    margin: 0.45em;
+}
+
+#plusMinusNav {
+    flex: 1;
+}
+
+#menuNav {
+    flex: 1;
+}
+
+.navImages {
+    width: 30px;
+    height: 30px;
+}
+
+#cssNav {
+    flex: 1;
+    width: 30px;
+    border: 1px solid #ECF0F1;
+    border-radius: 2px;
+    -webkit-transition: width 0.17s; /* For Safari 3.1 to 6.0 */
+    transition: 0.23s;
+    padding: 0px 4px 8px 4px;
+}
+
+
+
+.menuLine {
+    width: 100%;
+    height: 2px;
+    background-color: #ECF0F1;
+    flex: 1;
+    margin-top: 8px;
+}

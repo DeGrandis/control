@@ -1,6 +1,6 @@
 <%- include ../partials/header.ejs %>
 
-<div class="content">
+<div class="content footerSpacing">
 
   <div class="result">
       <p class="subTitle" id="triggers">known devices.</>
@@ -16,11 +16,6 @@
                           <td><%= result[i].name %></td>
                           <td><%= result[i].topic %></td>
 
-                          <td>
-                              <form class="formButton">
-                              <input type="button" value="modify" class="customButton modify" onclick="window.location.href='/modify/<%= result[i]._id %>'" />
-                              </form>
-                          </td>
                           <td>
                               <form class="formButton">
                               <input type="button" value="delete" class="customButton delete" onclick="window.location.href='/deviceDelete/<%= result[i]._id %>'" />

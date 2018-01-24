@@ -1,0 +1,27 @@
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/floatingNav.ejs %>
+
+<div class="buttonWrapper">
+    <p class="buttonDevice">Device</p>
+    <button type="button" name="button" class="homescreenButton" id="onButton">On</button>
+    <button type="button" name="button" class="homescreenButton" id="offButton">Off</button>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        var socket = io();
+        socket.on('load', function(load){
+            console.log('logged');
+        });
+    });
+
+    function emitData(topic, status) {
+      var socket = io();
+      socket.emit('userClick', {top: topic, stat: status});
+    }
+
+</script>
+
+<%- include ../partials/footer.ejs %>

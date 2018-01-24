@@ -64,7 +64,6 @@ app.get('/settings', function(req, res) {
             for (var i = 0; i < result.length; i++) {
                 result[i].day = helpers.numberToName(result[i].day);
             }
-
             db.collection("Devices").find().toArray(function(err, deviceResult) {
                 if (err) throw err;
                 db.close();
@@ -162,8 +161,6 @@ io.on('connection', function(socket) {
     });
 });
 
-
-
 //starts server
 http.listen(3000, function() {
     console.log('Server Running.');
@@ -175,25 +172,25 @@ http.listen(3000, function() {
 //to the stored mqtt topic.
 //**does this every second.
 //*****THERE IS PROBABLY A MORE ELEGANT WAY TO DO THIS.
-setInterval(function() {
-    var current = new Date();
-    var day = current.getDay();
-    var minutes = (current.getMinutes()<10?'0':'') + current.getMinutes() // gets info with leading digit
-    var hours = (current.getHours()<10?'0':'') + current.getHours() // gets info with leading digit
-    var time = hours + ":" + minutes + ":" + current.getSeconds();
-    var seconds = ":0";
+MongoClient.connect(url, function(err, db) {
+  setInterval(function() {
+      var current = new Date();
+      var day = current.getDay();
+      var minutes = (current.getMinutes()<10?'0':'') + current.getMinutes() // gets info with leading digit
+      var hours = (current.getHours()<10?'0':'') + current.getHours() // gets info with leading digit
+      var time = hours + ":" + minutes + ":" + current.getSeconds();
+      var seconds = ":0";
 
-    MongoClient.connect(url, function(err, db) {
-        if (err) throw err;
-        db.collection("Days").find().toArray(function(err, result) {
-            if (err) throw err;
-            for (var i = 0; i < result.length; i++) {
-                if (day == result[i].day && time == (result[i].time + seconds)) {
-                    client.publish(result[i].topic, result[i].status);
-                }
-            }
-            db.close();
-        });
-    });
-    console.log("Day: " + day + " Time: " + time);
-}, 1000);
+      if (err) throw err;
+      db.collection("Days").find().toArray(function(err, result) {
+          if (err) throw err;
+          for (var i = 0; i < result.length; i++) {
+              if (day == result[i].day && time == (result[i].time + seconds)) {
+                  client.publish(result[i].topic, result[i].status);
+              }
+          }
+          //db.close();
+      });
+      console.log("Day: " + day + " Time: " + time);
+  }, 1000);
+});

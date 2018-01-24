@@ -98,3 +98,9 @@ td {
     color: #ECF0F1;
     padding: 10px;
 }
+
+.toggleDevices {
+    display: grid;
+      grid-template-columns: 100px 100px 100px;
+      grid-gap: 210px;
+}

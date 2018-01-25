@@ -14,8 +14,10 @@
     margin: 9px;
 }
 
+
 .buttonWrapper > p {
     margin: 0;
+    font-size: 18px;
 }
 
 .homescreenButton {

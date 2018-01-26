@@ -4,53 +4,6 @@
 
 }
 
-.customButton {
-    background-color: #34495E;
-    border-radius: 10px;
-    font-family: 'Source Sans Pro', sans-serif;
-    /*padding: 2px 8px 2px 8px;*/
-    -webkit-transition: width 0.17s; /* For Safari 3.1 to 6.0 */
-    transition: 0.17s;
-    cursor: pointer;
-    width: 35px;
-    height: 25px;
-    margin: 0 auto;
-    padding: 0;
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.delete {
-    color: #e74c3c;
-    border: 1px solid #e74c3c;
-}
-
-.delete:hover {
-    background-color: #e74c3c;
-    color: #34495E;
-}
-
-.modify {
-    color: #2ecc71;
-    border: 1px solid #2ecc71;
-}
-
-.modify:hover {
-    background-color: #2ecc71;
-    color: #34495E;
-}
-
-.submit {
-
-    color: #ecf0f1;
-    border: 1px solid #ecf0f1;
-}
-
-.submit:hover {
-    background-color: #ecf0f1;
-    color: #34495E;
-}
-
 .formButton {
 
 }
@@ -74,22 +27,9 @@ td {
     font-size: 18px;
 }
 
-.textInput {
-    font-size: 16px;
-    font-weight: 100;
-    background-color: #34495E;
-    border: 1px solid #ECF0F1;
-    border-top: #000;
-    border-left: #000;
-    border-right: #000;
-    color: #ECF0F1;
-    outline: none;
-}
 
-::placeholder {
-  color: #7F7F7F;
-  font-size: 15px;;
-}
+
+
 
 .showerOptions {
 

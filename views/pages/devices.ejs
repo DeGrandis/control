@@ -2,6 +2,28 @@
 
 <div class="content footerSpacing">
 
+    <div class="contentWrapper addDeviceWrapper">
+        <div class="formPadding">
+            <p class="subTitle" id="triggers"><strong>Add a Device</strong></>
+              <br>
+
+            <form class="addDevice" action="" method="post">
+                <p class="subHeading">Device Name</p>
+                <input class="textInput" type="text" name="name" value="" placeholder="">
+                <br>
+                <br>
+
+                <p class="subHeading">MQTT Topic</p>
+                <input class="textInput" type="text" name="topic" value="" placeholder="">
+                <br>
+
+                <br>
+                <button class="customButton submit"type="submit" name="button" value="Submitted">Submit</button>
+            </form>
+        </div>
+
+    </div>
+
   <div class="result">
       <p class="subTitle" id="triggers">known devices.</>
           <div class="savedDays">
@@ -31,23 +53,7 @@
 
 
 
-  <p class="subTitle" id="triggers">add a device.</>
-    <br>
 
-  <form class="addDevice" action="" method="post">
-      <p class="subTitle">name.</p>
-      <input class="textInput" type="text" name="name" value="" placeholder="lights, shower, ect.">
-      <br>
-      <br>
-
-      <p class="subTitle">mqtt topic.</p>
-      <input class="textInput" type="text" name="topic" value="" placeholder="Topic">
-      <br>
-
-      <br>
-      <br>
-      <button class="customButton submit"type="submit" name="button" value="Submitted">Submit</button>
-  </form>
 </div>
 
 <%- include ../partials/footer.ejs %>

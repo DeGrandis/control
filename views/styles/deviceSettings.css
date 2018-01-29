@@ -12,7 +12,13 @@
 }
 
 .addDeviceWrapper {
-    border-color: #27ae60;
+    border-color: #4d6d8e;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.devicesWrapper {
+    border-color: #4d6d8e;
     border-style: solid;
     border-width: 2px;
 }
@@ -23,22 +29,23 @@
 
 .subTitle {
     font-family: 'Source Sans Pro', sans-serif;
-    color: #2ecc71;
+    color: #6a95c1;
     font-size: 26px;
     margin: 0;
+
 }
 
 .subHeading {
-    font-family: 'Source Sans Pro', sans-serif;
-    color: #2ecc71;
-    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #6087af;
+    font-size: 18px;
     margin: 0;
 }
 
 .customButton {
     background-color: #34495E;
     border-radius: var(--borderRadius);
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Roboto', sans-serif;
     /*padding: 2px 8px 2px 8px;*/
     -webkit-transition: width 0.17s; /* For Safari 3.1 to 6.0 */
     transition: 0.17s;
@@ -83,19 +90,23 @@
 }
 
 .textInput {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 100;
     background-color: #34495E;
-    border: 1px solid #ECF0F1;
+    border: 1px solid #6a95c1;
     border-top: #000;
     border-left: #000;
     border-right: #000;
-    color: #ecf0f1;
+    color: #6a95c1;
     outline: none;
+    padding-bottom: 3%;
+    padding-top: 3%;
     width: 100%;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 ::placeholder {
   color: #95a5a6;
-  font-size: 15px;;
+  font-size: 15px;
 }

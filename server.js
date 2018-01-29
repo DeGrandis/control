@@ -10,7 +10,8 @@ var path = require('path');
 var mqtt = require('mqtt');
 var favicon = require('serve-favicon');
 var ejs = require('ejs');
-var helpers = require('./js/serverHelpers.js')
+var helpers = require('./js/serverHelpers.js');
+var nodemailer = require('nodemailer');
 
 //connect to mqtt server, will be a local IP
 var client  = mqtt.connect('mqtt:192.168.1.242:1883');
@@ -35,6 +36,16 @@ MongoClient.connect(url, function(err, db) {
 client.on('connect', function () {
   console.log('MQTT: Connected');
 })
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'pihousemini@gmail.com',
+    pass: 'nodejsemail'
+  }
+});
+
+
 
 //------------------------
 //ROUTES
@@ -168,6 +179,21 @@ io.on('connection', function(socket) {
 //starts server
 http.listen(3000, function() {
     console.log('Server Running.');
+});
+
+var mailOptions = {
+  from: 'pihousemini@gmail.com',
+  to: 'rtdegrandis@gmail.com',
+  subject: 'ctrl. Has restarted.',
+  text: 'The ctrl server has restarted for some unknown reason.  Please check on it.'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
 });
 
 //uses built in javascript data functions and stores it to a variable.

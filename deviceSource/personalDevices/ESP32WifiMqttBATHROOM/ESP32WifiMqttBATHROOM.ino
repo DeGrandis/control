@@ -1,3 +1,17 @@
+/*
+@author Robert DeGrandis
+@version 1.0.1
+
+This arduino sketch is dedicated for my apartments bathroom's devices.  It controls the
+relays that control the shower and the servo that controls the lights.  
+
+To use for your own, change the wifi, mqtt, subscription topics, and publish topics respectively.
+
+@TODO add and calibrate GALLONS USED.  Needs hardcoded volume per second value and a timer
+      on start and stop callbacks.  Also must publish result on stop and use websockets 
+      to update homepage
+*/
+
 #include <WiFi.h>
 #include <PubSubClient.h>
 
@@ -12,18 +26,29 @@
 WiFiClient wifiClient;
 PubSubClient client(wifiClient);
 
+//int array for servo pins to be easily interfaced.
 static int relays[] = {13, 4, 2, 3};
 
+//int for servo data pin
 static int servoPin = 5;
 
+/**
+ * Turns relay at param pin on.
+ * 
+ * @param pin is the pin to be turned on.
+ */
 void relayOn(int pin) {
   digitalWrite(relays[pin], HIGH);
 }
 
+/**
+ * Turns relay at param pin off.
+ * 
+ * @param pin is the pin to be turned off.
+ */
 void relayOff(int pin) {
   digitalWrite(relays[pin], LOW);
 }
-
 
 /**
  * Connects to WiFi and prints out local IP + MAC address
@@ -51,7 +76,8 @@ void connectWifi()
 
 /*
  * Callback function that gets called when subscribed topic gets
- * a message published to it.
+ * a message published to it.  Can handle multiple topics with
+ * added conditionals.
  * 
  * @topic the topic that published the message
  * @payload the message
@@ -86,18 +112,21 @@ void callback(char* topic, byte* payload, unsigned int length)
   }
 }
 
+/**
+ * Moves servo into on position for mount in flipped position. (non standard)
+ */
 void on() {
   ledcAttachPin(servoPin, 5);
   ledcWrite(servoPin, 4000);
   delay(500);
   ledcDetachPin(servoPin);
-  
-  
-  
 }
 
+/**
+ * Moves servo into off position for mount in flipped position. (non standard)
+ */
 void off() {
-   ledcAttachPin(servoPin, 5);
+  ledcAttachPin(servoPin, 5);
   ledcWrite(servoPin, 7000);
   delay(500);
   ledcDetachPin(servoPin);
@@ -127,6 +156,12 @@ void setup()
   ledcSetup(servoPin, 50, 16);
 }
 
+/**
+ * This function is called when the loop methond sees there is no
+ * MQTT connection.  This function attempts to reconnect.  If it can 
+ * not, it disconnects from wifi, connects again, and attempts to connect to 
+ * the MQTT server again, once wifi is established.
+ */
 void reconnect() 
 {
   while (!client.connected()) {
@@ -139,11 +174,11 @@ void reconnect()
       Serial.print("failed, rc=");
       Serial.print(client.state());
       Serial.println(", resetting wif connection.");
-      // Wait 5 seconds before retrying
-
+      
+      delay(500);
       WiFi.disconnect();
       Serial.println("Disconnected from WiFi");
-
+      delay(1000);
       connectWifi();
       Serial.println("Wifi Reconnected!  Trying MQTT Connection again.");
       delay(5000);
@@ -151,7 +186,10 @@ void reconnect()
   }
 }
 
-
+/**
+ * This function is called repeatedly.  It calls the client's loop function (required)
+ * and handles the connection state if something happens in the network.
+ */
 void loop() 
 {
   if(!client.connected()) {

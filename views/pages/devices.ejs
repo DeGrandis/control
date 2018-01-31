@@ -24,7 +24,7 @@
 
     </div>
 
-  <div class="result contentWrapper devices">
+  <div class="contentWrapper devicesWrapper">
       <p class="subTitle" id="triggers">known devices.</>
           <div class="savedDays">
               <table class="tableStyle">
@@ -34,10 +34,9 @@
                       <td><strong>action</strong></td>
                   </tr>
                   <% for(var i=0; i < result.length; i++) { %>
-                      <tr>
+                      <tr class="tableRowStyle">
                           <td><%= result[i].name %></td>
                           <td><%= result[i].topic %></td>
-
                           <td>
                               <form class="formButton">
                               <input type="button" value="delete" class="customButton delete" onclick="window.location.href='/deviceDelete/<%= result[i]._id %>'" />

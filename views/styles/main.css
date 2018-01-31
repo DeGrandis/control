@@ -13,18 +13,22 @@
     color: #ECF0F1;
 }
 
-td {
-    padding-right: 25px;
-    padding-bottom: 2px;
+.tableRowStyle {
+    font-size: 14px;
+    padding: 4px;
+}
+
+.tableRowStyle:nth-child(even) {
+    background-color: #3b536b;
+
 }
 
 .tableStyle {
-    margin: 0;
-    padding: 0;
+    border-spacing:0
 }
 
 .tableHeading {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 

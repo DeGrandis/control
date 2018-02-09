@@ -15,7 +15,8 @@
 
 .tableRowStyle {
     font-size: 14px;
-    padding: 4px;
+    padding: 50px;
+
 }
 
 .tableRowStyle:nth-child(even) {
@@ -23,26 +24,37 @@
 
 }
 
+td {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+
+
+.tableRowStyleTrig {
+    border-bottom: 2px solid #3b536b;
+    margin: 2px;
+}
+
+.actionRow {
+    border-bottom: 3px solid #9da6ac;
+
+}
+
 .tableStyle {
-    border-spacing:0
+    border-spacing:0;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .tableHeading {
     font-size: 16px;
 }
 
-
-
-
-
-.showerOptions {
-
+.tableRightJustify {
+    text-align: right;
 }
 
-.binaryRadio {
-    color: #ECF0F1;
-    padding: 10px;
-}
 
 .toggleDevices {
     margin-top: 15px;

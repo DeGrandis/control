@@ -11,41 +11,7 @@
         });
     </script>
 
-    <div class="result">
-        <p class="subTitle" id="triggers">current triggers.</>
-            <div class="savedDays">
-                <table class="tableStyle">
-                    <tr class="tableHeading">
-                        <td><strong>day</strong></td>
-                        <td><strong>time</strong></td>
-                        <td><strong>device</strong></td>
-                        <td><strong>message</strong></td>
-                        <td><strong>action</strong></td>
-                    </tr>
-                    <% for(var i=0; i < result.length; i++) { %>
-                        <tr>
-                            <td><%= result[i].day %></td>
-                            <td><%= result[i].time %></td>
-                            <td><%= result[i].topic %></td>
-                            <td><%= result[i].status %></td>
-                            <td>
-                                <form class="formButton">
-                                <input type="button" value="modify" class="customButton modify" onclick="window.location.href='/modify/<%= result[i]._id %>'" />
-                                </form>
-                            </td>
-                            <td>
-                                <form class="formButton">
-                                <input type="button" value="X" class="customButton delete" onclick="window.location.href='/dayDelete/<%= result[i]._id %>'" />
-                                </form>
-                            </td>
-
-                        </tr>
-                    <% } %>
-                </table>
-            </div>
-    </div>
-
-    <form class="showerOptions" action="" method="post">
+    <form class="showerOptions contentWrapper addDeviceWrapper" action="" method="post">
         <p class="subTitle">select a day.</p>
 
         <select name="day">
@@ -82,6 +48,43 @@
         <br>
         <button class="customButton submit"type="submit" name="button" value="Submitted">Submit</button>
     </form>
+
+    <div class="result contentWrapper devicesWrapper">
+        <p class="subTitle" id="triggers">current triggers.</>
+            <div class="savedDays">
+                <table class="tableStyle">
+                    <% for(var i=0; i < result.length; i++) { %>
+                        <tr class="tableRowStyleTrig">
+                            <td><strong>day</strong></td>
+                            <td class="tableRightJustify"><%= result[i].day %></td>
+                        </tr>
+                        <tr class="tableRowStyleTrig">
+                            <td><strong>time</strong></td>
+                            <td class="tableRightJustify"><%= result[i].time %></td>
+                        </tr>
+                        <tr class="tableRowStyleTrig">
+                            <td><strong>device</strong></td>
+                            <td class="tableRightJustify"><%= result[i].topic %></td>
+                        </tr>
+                        <tr class="tableRowStyleTrig">
+                            <td><strong>message</strong></td>
+                            <td class="tableRightJustify"><%= result[i].status %></td>
+                        </tr>
+                        <tr class="tableRowStyleTrig actionRow">
+                            <td><strong>action</strong></td>
+                            <td>
+                                <form class="formButton">
+                                <input type="button" value="X" class="customButton delete trig" onclick="window.location.href='/dayDelete/<%= result[i]._id %>'" />
+                                </form>
+                            </td>
+                        </tr>
+
+                    <% } %>
+                </table>
+            </div>
+    </div>
+
+
 
 </div>
 

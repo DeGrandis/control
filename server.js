@@ -11,10 +11,10 @@ var mqtt = require('mqtt');
 var favicon = require('serve-favicon');
 var ejs = require('ejs');
 var helpers = require('./js/serverHelpers.js');
-var nodemailer = require('nodemailer');
+// var nodemailer = require('nodemailer');
 
 //connect to mqtt server, will be a local IP
-var client  = mqtt.connect('mqtt:192.168.1.242:1883');
+var client  = mqtt.connect('mqtt:localhost:1883');
 //url to public mongodb database
 var url = 'mongodb://rob:rob@ds251277.mlab.com:51277/homeautomationdeg';
 
@@ -37,13 +37,13 @@ client.on('connect', function () {
   console.log('MQTT: Connected');
 })
 
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'pihousemini@gmail.com',
-    pass: 'nodejsemail'
-  }
-});
+// var transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: 'pihousemini@gmail.com',
+//     pass: 'nodejsemail'
+//   }
+// });
 
 
 
@@ -181,20 +181,20 @@ http.listen(3000, function() {
     console.log('Server Running.');
 });
 
-var mailOptions = {
-  from: 'pihousemini@gmail.com',
-  to: 'rtdegrandis@gmail.com',
-  subject: 'ctrl. Has restarted.',
-  text: 'The ctrl server has restarted for some unknown reason.  Please check on it.'
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-});
+// var mailOptions = {
+//   from: 'pihousemini@gmail.com',
+//   to: 'rtdegrandis@gmail.com',
+//   subject: 'ctrl. Has restarted.',
+//   text: 'The ctrl server has restarted for some unknown reason.  Please check on it.'
+// };
+//
+// transporter.sendMail(mailOptions, function(error, info){
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log('Email sent: ' + info.response);
+//   }
+// });
 
 //uses built in javascript data functions and stores it to a variable.
 //polls the database and checks to see if any entry matches the current time.
